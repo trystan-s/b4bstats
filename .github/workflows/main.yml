@@ -1,0 +1,16 @@
+name: Sync Upstream
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: "0 0 * * *"
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Upstream Sync
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.2
+        with:
+          target_sync_branch: main
+          upstream_sync_repo: Mazzzoni/b4bstats
+          upstream_sync_branch: main      
