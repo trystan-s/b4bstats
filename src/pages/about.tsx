@@ -54,7 +54,7 @@ const Page: NextPage = () => {
             <p>
               Feedback or issue ?
               <br/>
-              You can open issue or request feature on <a href="https://github.com/Mazzzoni/b4bstats" target="_blank" rel="noreferrer" className="color-primary">Github</a> or you can contact me at <a href="mailto:hello@mazz.lol" className="color-primary" rel="noreferrer" target="_blank">hello@mazz.lol</a> or ping me on
+              You can open issue or request feature on <a href="https://github.com/Mazzzoni/b4bstats" target="_blank" rel="noreferrer" className="color-primary">GitHub</a> or you can contact me at <a href="mailto:hello@mazz.lol" className="color-primary" rel="noreferrer" target="_blank">hello@mazz.lol</a> or ping me on
               <br/>
               <img src="/images/discord.svg" alt="discord" className="w-4 relative top-[-2px] inline"/> <b style={{color: '#7289DA'}}>Discord</b> <a href="https://discordapp.com/users/370123066594033668" className="color-primary" rel="noreferrer" target="_blank">@mazz#0385</a>.
             </p>
@@ -145,7 +145,7 @@ const Page: NextPage = () => {
               <br/>
               Your statistics file is being parsed then all data remain temporarily in your browser to be displayed, that&apos;s why you need to drag and drop file every time you refresh page.
               <br/>
-              Application source code is available on <a href="https://github.com/Mazzzoni/b4bstats" target="_blank" rel="noreferrer" className="color-primary">Github</a> under <strong>MIT License</strong>. You&apos;re welcome to contribute to it or use it as you wish !
+              Application source code is available on <a href="https://github.com/Mazzzoni/b4bstats" target="_blank" rel="noreferrer" className="color-primary">GitHub</a> under <strong>MIT License</strong>. You&apos;re welcome to contribute to it or use it as you wish !
             </p>
           </div>
         </div>
