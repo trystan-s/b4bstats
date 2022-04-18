@@ -66,7 +66,8 @@
     "2_3": "2.3: Job 10:22",
     "3_1": "3.1: Dr. Rogers Neighborhood",
     "3_2": "3.2: Remnants",
-    "4": "4: The Abomination"
+    "4": "4: The Abomination",
+    "hives": "Hives"
   },
   "progressions": {
     "title": "Progressions",
@@ -103,7 +104,14 @@
       "cdc_b": "Making the Grade",
       "cdc_c": "The Road to Hell",
       "cdc_d": "The Body Dump",
-      "titan_a": "The Abomination"
+      "titan_a": "The Abomination",
+      "dungeon_chasm": "The Cut",
+      "dungeon_river": "Blood Stream",
+      "dungeon_trench": "Caustic Cesspool",
+      "dungeon_chamber": "Sunken Passage",
+      "dungeon_infestation": "Brood Lair",
+      "dungeon_mines": "300 Below",
+      "dungeon_arena": "The Nursery"
     }
   },
   "miscellaneous": {
@@ -170,7 +178,7 @@
     "Machete": "Machete",
     "AR01": "M4 Carbine",
     "AR02": "AK47",
-    "AR03Corrupted": "Pestilence",
+    "AR01Corrupted": "Pestilence",
     "AR04": "M16",
     "AR05": "Scar",
     "AR06": "Ranch Rifle",
@@ -200,7 +208,7 @@
     "AR03": "M1A",
     "Sni01": "Phoenix 350L",
     "Sni02": "Barrett M95",
-    "Sni02Corrupted": "Witness"
+    "AR03Corrupted": "Witness"
   },
   "graphs": {
     "title": "Graphs",

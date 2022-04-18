@@ -6,7 +6,7 @@ import { Cleaners } from '@components/statistics/types';
 import { getCleanerNameById } from '@utils/generic';
 import { Award, List, PieChart } from 'react-feather';
 
-export default function Quicklinks() {
+export default function SelfQuicklinks() {
   const {t} = useTranslation();
   const [difficultyFilters, setDifficultyFilters] = useRecoilState(DifficultyFiltersState);
 
@@ -104,7 +104,7 @@ export default function Quicklinks() {
           >
             <img
               className="w-11 inline"
-              src={`/images/${getCleanerNameById(cleanerId).toLowerCase()}.webp`}
+              src={`/images/cleaners/${getCleanerNameById(cleanerId).toLowerCase()}.webp`}
               alt={getCleanerNameById(cleanerId).toLowerCase()}
             />
 
