@@ -10,6 +10,9 @@ type WeaponsMapDefinition = {
   [key in 'Ranged' | 'Melee']: WeaponMapDefinition[];
 };
 
+// All weapons that fire in bursts, shot 3 times (Beretta M9 / M16)
+export const burstCount = 3;
+
 // Map each weapon to their matching line (per quality) from data document
 export const WeaponsMap: WeaponsMapDefinition = {
   Ranged: [
@@ -190,7 +193,7 @@ export const WeaponsMap: WeaponsMapDefinition = {
       category: WeaponCategories.Handgun,
       image: '357_magnum.webp',
       slot: 'secondary',
-      ammo: 'sniper',
+      ammo: 'rifle',
       attachments: {
         barrel: true,
         magazine: true,
@@ -266,7 +269,7 @@ export const WeaponsMap: WeaponsMapDefinition = {
       category: WeaponCategories.Handgun,
       image: 'embezzler.webp',
       slot: 'secondary',
-      ammo: 'sniper',
+      ammo: 'rifle',
       attachments: {
         barrel: false,
         magazine: false,
@@ -493,7 +496,7 @@ export const WeaponsMap: WeaponsMapDefinition = {
       name: Weapons.TEC9,
       category: WeaponCategories.SMG,
       image: 'tec9.webp',
-      slot: 'primary',
+      slot: 'secondary',
       ammo: 'pistol_smg',
       attachments: {
         barrel: true,
