@@ -54,6 +54,9 @@ export type WeaponStatisticsDefinition = {
   metersScale: number[]
   magazineSize: number
   reloadSpeed: number
+  rechamberLength: number
+  rechamberAnimationLength: number
+  weakspotDamageMultiplier: number
   stumblePowerMultiplier: number
   bulletPenetrationMultiplier: number
   stamina?: number
@@ -86,7 +89,7 @@ export type WeaponDefinition = {
     stock: boolean
   }
   qualities: Record<WeaponQualities, WeaponStatisticsDefinition>
-  notes?: string
+  notes?: Record<string, string>
 }
 
 export type AttachmentDefinition = {
