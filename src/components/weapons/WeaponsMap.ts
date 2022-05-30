@@ -4,7 +4,7 @@ import { WeaponCategories, WeaponDefinition, WeaponQualities } from '@components
 type WeaponMapDefinition = Partial<Omit<WeaponDefinition, 'name' | 'qualities'>> & {
   name: Weapons;
   qualities: Partial<Record<WeaponQualities, number>>;
-}
+};
 
 type WeaponsMapDefinition = {
   [key in 'Ranged' | 'Melee']: WeaponMapDefinition[];
@@ -736,6 +736,9 @@ export const WeaponsMap: WeaponsMapDefinition = {
         [WeaponQualities.Rare]: 26,
         [WeaponQualities.Epic]: 27,
         [WeaponQualities.Legendary]: 28,
+      },
+      notes: {
+        'Inversed quality': 'Statistics worsen when you increase quality. (not applicable for damage and stumble)',
       },
     },
     {

@@ -1,18 +1,17 @@
-import { WeaponCategories, WeaponDefinition, WeaponQualities } from '@components/weapons/types';
+import { WeaponCategories, WeaponDefinition } from '@components/weapons/types';
 import { useRecoilValue } from 'recoil';
 import SelectedQualityState from '@components/weapons/SelectedQualityState';
 import IndividualStatistic from '@components/weapons/IndividualStatistic';
 import { Info } from 'react-feather';
+import { getWeaponQuality } from '@components/weapons/utils';
 
 type Props = {
   weapon: WeaponDefinition;
-}
+};
 
 export default function WeaponStatistics({weapon}: Props) {
   const selectedQuality = useRecoilValue(SelectedQualityState);
-  const weaponQuality = Object.keys(weapon.qualities).includes(selectedQuality)
-    ? weapon.qualities[selectedQuality]
-    : weapon.qualities[Object.keys(weapon.qualities)[0] as WeaponQualities];
+  const weaponQuality = getWeaponQuality(weapon, selectedQuality);
 
   return (
     <div className="border-top-subtle mt-5">
@@ -27,6 +26,7 @@ export default function WeaponStatistics({weapon}: Props) {
               </div>}
               icon="magazine_size.svg"
               value={weaponQuality.magazineSize}
+              upgrade={weapon.upgrades.magazineSize}
               fractionDigits={0}
             />
 
@@ -38,6 +38,7 @@ export default function WeaponStatistics({weapon}: Props) {
               </div>}
               icon="reload_time.svg"
               value={weaponQuality.reloadSpeed}
+              upgrade={weapon.upgrades.reloadSpeed}
             />
 
             <IndividualStatistic
@@ -48,6 +49,7 @@ export default function WeaponStatistics({weapon}: Props) {
               </div>}
               icon="bullet_penetration.svg"
               value={weaponQuality.bulletPenetrationMultiplier}
+              upgrade={weapon.upgrades.bulletPenetrationMultiplier}
             />
           </>
         )}
@@ -63,6 +65,7 @@ export default function WeaponStatistics({weapon}: Props) {
           </div>}
           icon="stumble_power.svg"
           value={weaponQuality.stumblePowerMultiplier}
+          upgrade={weapon.upgrades.stumblePowerMultiplier}
         />
 
         {weapon.category !== WeaponCategories.Melee && (
@@ -75,6 +78,7 @@ export default function WeaponStatistics({weapon}: Props) {
               </div>}
               icon="ads_time_in.svg"
               value={weaponQuality.ads.in}
+              upgrade={weapon.upgrades['ads.in']}
             />
 
             <IndividualStatistic
@@ -85,6 +89,7 @@ export default function WeaponStatistics({weapon}: Props) {
               </div>}
               icon="ads_time_out.svg"
               value={weaponQuality.ads.out}
+              upgrade={weapon.upgrades['ads.out']}
             />
           </>
         )}
@@ -97,6 +102,7 @@ export default function WeaponStatistics({weapon}: Props) {
           </div>}
           icon="swap_time_in.svg"
           value={weaponQuality.swap.in}
+          upgrade={weapon.upgrades['swap.in']}
         />
 
         <IndividualStatistic
@@ -107,6 +113,7 @@ export default function WeaponStatistics({weapon}: Props) {
           </div>}
           icon="swap_time_out.svg"
           value={weaponQuality.swap.out}
+          upgrade={weapon.upgrades['swap.out']}
         />
 
         <IndividualStatistic
@@ -117,6 +124,7 @@ export default function WeaponStatistics({weapon}: Props) {
           </div>}
           icon="move_speed_jog.svg"
           value={weaponQuality.movementSpeed.jog}
+          upgrade={weapon.upgrades['movementSpeed.jog']}
           fractionDigits={0}
         />
 
@@ -128,6 +136,7 @@ export default function WeaponStatistics({weapon}: Props) {
           </div>}
           icon="move_speed_hip_fire.svg"
           value={weaponQuality.movementSpeed.hipfire}
+          upgrade={weapon.upgrades['movementSpeed.hipfire']}
           fractionDigits={0}
         />
 
@@ -139,6 +148,7 @@ export default function WeaponStatistics({weapon}: Props) {
           </div>}
           icon="move_speed_ads_no_fire.svg"
           value={weaponQuality.movementSpeed.ads}
+          upgrade={weapon.upgrades['movementSpeed.ads']}
           fractionDigits={0}
         />
 
@@ -150,6 +160,7 @@ export default function WeaponStatistics({weapon}: Props) {
           </div>}
           icon="move_speed_other.svg"
           value={weaponQuality.movementSpeed.other}
+          upgrade={weapon.upgrades['movementSpeed.other']}
           fractionDigits={0}
         />
       </div>
