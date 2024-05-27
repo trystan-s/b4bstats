@@ -3,13 +3,14 @@ import { Chart } from 'react-chartjs-2';
 import { useRecoilValue } from 'recoil';
 import { Trans, useTranslation } from 'react-i18next';
 import { ChartData, ChartOptions } from 'chart.js';
-import { localeFormat, nFormatter } from '@utils/generic';
+import { currentCleanerOrder, getCleanerIdsByNames, localeFormat, nFormatter } from '@utils/generic';
 import StatisticsState from '@components/self/StatisticsState';
 import { DifficultyColors } from '@utils/colors';
-import { Cleaners, Difficulties } from '@components/statistics/types';
+import {  Difficulties } from '@components/statistics/types';
 import { tooltipCallbackLabelMissions } from '@utils/charts';
 import { Badge } from '@mantine/core';
 import SelectedProgressionTypeState from '@components/self/SelectedProgressionTypeState';
+import _ from 'lodash';
 
 export default function MissionsCompletedPerCleaner() {
   const statistics = useRecoilValue(StatisticsState);
@@ -20,14 +21,21 @@ export default function MissionsCompletedPerCleaner() {
   let missionsVeteranCompleted: number[] = [];
   let missionsNightmareCompleted: number[] = [];
   let missionsNoHopeCompleted: number[] = [];
+  let missionsLegendaryCompleted: number[] = [];
   let missionsSwarmCompleted: number[] = [];
   let missionsTotalCompleted: number[] = [];
 
-  Object.values(statistics.missionsStatistics[progressionType].missionsCompletedPerCleaner).map((cleaner) => {
+  const cleanerIds = getCleanerIdsByNames(currentCleanerOrder);
+
+  cleanerIds.map((cleanerId) => _.replace(cleanerId, "hero_", "")).map((cleanerId) => {
+    const cleanerIndex = +cleanerId - 1;
+    const cleaner = Object.values(statistics.missionsStatistics[progressionType].missionsCompletedPerCleaner)[cleanerIndex];
+
     missionsRecruitCompleted.push(cleaner.easy);
     missionsVeteranCompleted.push(cleaner.normal);
     missionsNightmareCompleted.push(cleaner.hard);
     missionsNoHopeCompleted.push(cleaner.veryhard);
+    missionsLegendaryCompleted.push(cleaner.legendary);
     missionsSwarmCompleted.push(cleaner.pvp);
     missionsTotalCompleted.push(cleaner.total);
   });
@@ -54,6 +62,11 @@ export default function MissionsCompletedPerCleaner() {
       backgroundColor: DifficultyColors[Difficulties.NoHope],
     },
     {
+      label: t(`difficulties.legendary`),
+      data: missionsLegendaryCompleted,
+      backgroundColor: DifficultyColors[Difficulties.Legendary],
+    },
+    {
       label: t(`difficulties.pvp`),
       data: missionsSwarmCompleted,
       backgroundColor: DifficultyColors[Difficulties.Swarm],
@@ -61,7 +74,7 @@ export default function MissionsCompletedPerCleaner() {
   ];
 
   const data: ChartData = {
-    labels: Object.values(Cleaners).map(cleaner => t(`cleaners.${cleaner}`)),
+    labels: cleanerIds.map(cleaner => t(`cleaners.${cleaner}`)),
     datasets: datasets,
   };
 
@@ -74,7 +87,7 @@ export default function MissionsCompletedPerCleaner() {
             weight: '700',
           },
           callback: function (value, index, values) {
-            const cleanerId = Object.values(Cleaners)[index];
+            const cleanerId = cleanerIds[index];
             const missionsCompletedByCleaner = missionsTotalCompleted[index];
 
             return `${t(`cleaners.${cleanerId}`)} - ${missionsCompletedByCleaner}`;
@@ -110,7 +123,10 @@ export default function MissionsCompletedPerCleaner() {
                 case 3: // veryhard
                   overallMissionsCompleted -= statistics.missionsStatistics[progressionType].missionsCompletedPerDifficulty.veryhard;
                   break;
-                case 4: // pvp
+                case 4: // legendary
+                  overallMissionsCompleted -= statistics.missionsStatistics[progressionType].missionsCompletedPerDifficulty.legendary;
+                  break;
+                case 5: // pvp
                   overallMissionsCompleted -= statistics.missionsStatistics[progressionType].missionsCompletedPerDifficulty.pvp;
                   break;
               }

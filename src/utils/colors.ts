@@ -19,6 +19,8 @@ export const WeaponColors: Record<WeaponTypes | WeaponCategories, string> = {
   [WeaponCategories.Sniper]: '#004386',
   [WeaponTypes.Bow]: '#e77d05',
   [WeaponCategories.Bow]: '#e77d05',
+  [WeaponTypes.Flamethrower]: '#64122f',
+  [WeaponCategories.Flamethrower]: '#64122f',
 };
 
 export const RiddenColors: Record<Riddens, string> = {
@@ -41,6 +43,10 @@ export const RiddenColors: Record<Riddens, string> = {
   [Riddens.Crusher]: '#bb0000',
   [Riddens.Tallboy]: '#bb0000',
   [Riddens.Ripper]: '#bb0000',
+
+  [Riddens.Lobber]: '#875432',
+  [Riddens.Swarmer]: '#875432',
+  [Riddens.Wailer]: '#875432',
 };
 
 export const DifficultyColors: Record<Difficulties, string> = {
@@ -48,6 +54,7 @@ export const DifficultyColors: Record<Difficulties, string> = {
   [Difficulties.Veteran]: '#b47c00',
   [Difficulties.Nightmare]: '#bb0000',
   [Difficulties.NoHope]: '#8000b5',
+  [Difficulties.Legendary]: '#ffeacc',
   [Difficulties.Swarm]: '#102d7a',
 };
 
