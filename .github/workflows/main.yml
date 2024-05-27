@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Upstream Sync
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.2
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
         with:
           target_sync_branch: main
           upstream_sync_repo: Mazzzoni/b4bstats
